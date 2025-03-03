@@ -45,6 +45,15 @@ export class Auth {
     })
   }
 
+  async setAdmin(id: number, admin: boolean = true) {
+    await prisma.user.update({
+      where: { id },
+      data: {
+        admin
+      }
+    })
+  }
+
   async logout(session: Session) {
     await invalidateSession(session.id)
     deleteSessionTokenCookie(this.event)

@@ -17,7 +17,6 @@ export const handle: Handle = async ({ resolve, event }) => {
 
     if (event.url.pathname !== "/login") redirect(301, "/login")
   }
-  console.log("User:", user?.id ?? "unknown")
 
   return resolve(event)
 }

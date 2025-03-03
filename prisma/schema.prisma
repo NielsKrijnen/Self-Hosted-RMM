@@ -11,6 +11,7 @@ model User {
   id       Int       @id @default(autoincrement())
   email    String    @unique
   password String
+  admin    Boolean   @default(false)
   sessions Session[]
 }
 
@@ -20,4 +21,11 @@ model Session {
   expiresAt DateTime
 
   user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model Device {
+  id           Int       @id @default(autoincrement())
+  secret       String    @default(uuid(7))
+  name         String
+  lastActivity DateTime?
 }
